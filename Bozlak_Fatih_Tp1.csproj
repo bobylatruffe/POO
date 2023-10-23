@@ -43,7 +43,6 @@
         <Compile Include="Armory.cs" />
         <Compile Include="ArmoryException.cs" />
         <Compile Include="Player.cs" />
-        <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SpaceInvaders.cs" />
         <Compile Include="Spaceship.cs" />
