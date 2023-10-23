@@ -29,7 +29,8 @@ namespace Bozlak_Fatih_Tp1
             this.AddPlayerToPlayers(new Player("cristiano", "ronaldo", "cr7"));
         }
 
-        public static void Main(string[] args)
+        //TODO enlever les commentaires
+        /*public static void Main(string[] args)
         {
             SpaceInvaders spaceInvaders = new SpaceInvaders();
 
@@ -37,6 +38,6 @@ namespace Bozlak_Fatih_Tp1
             {
                 Console.WriteLine(player);
             }
-        }
+        }*/
     }
 }
