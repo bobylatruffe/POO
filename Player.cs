@@ -8,13 +8,27 @@ namespace Bozlak_Fatih_Tp1
         private readonly string _lastName;
         private readonly string _alias;
         private readonly string _name;
+        private Spaceship _spaceship;
 
+        /*
+         * Mettre à jour la classe Player afin qu’il puisse utiliser un vaisseau par défaut :
+         * "Par défaut" je l'interprète s'il n'est pas reçu dans le constructeur, alors le constructeur
+         * en crée un par defaut.
+         */
         public Player(string firstName, string lastName, string alias)
         {
             Player.FormatterFirstAndLastName(ref firstName, ref lastName);
             _firstName = firstName;
             _lastName = lastName;
             _alias = alias;
+
+            _spaceship = new Spaceship(100, 100);
+        }
+
+        public Player(string firstName, string lastName, string alias, Spaceship spaceship) : this(firstName, lastName,
+            alias)
+        {
+            this._spaceship = spaceship;
         }
 
         private string FirstName
@@ -38,9 +52,15 @@ namespace Bozlak_Fatih_Tp1
             get => this.FirstName + " " + this.LastName;
         }
 
+        public Spaceship Spaceship
+        {
+            get => this._spaceship;
+            set => this._spaceship = value;
+        }
+
         public override string ToString()
         {
-            return $"{this.Alias} ({this.FirstName} {this.LastName})";
+            return $"{this.Alias} ({this.Name})";
         }
 
         public override bool Equals(object obj)
