@@ -14,11 +14,12 @@
         private int _maxDamage;
         private EWeaponType _eWeaponType;
 
-        public Weapon(string name, int minDamage, int maxDamage)
+        public Weapon(string name, int minDamage, int maxDamage, EWeaponType eWeaponType)
         {
             this._name = name;
             this._minDamage = minDamage;
             this._maxDamage = maxDamage;
+            this._eWeaponType = eWeaponType;
         }
 
         public int MinDamage
@@ -39,6 +40,11 @@
         public string EWeaponType
         {
             get => _eWeaponType.ToString();
+        }
+
+        public override string ToString()
+        {
+            return $"{this.Name} (type={this.EWeaponType}, minDamage={this.MinDamage}, maxDamage={this.MaxDamage})";
         }
     }
 }

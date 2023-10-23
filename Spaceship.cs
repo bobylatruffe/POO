@@ -1,19 +1,28 @@
-﻿namespace Bozlak_Fatih_Tp1
+﻿using System;
+using System.Collections.Generic;
+
+namespace Bozlak_Fatih_Tp1
 {
     public class Spaceship
     {
-        private int _maxStructure;
+        private readonly string _name;
+
+        private readonly int _maxStructure;
         private int _currentStructure;
 
-        private int _maxShield;
+        private readonly int _maxShield;
         private int _currentShield;
 
-        private int _structureDammage;
+        private int _structureDamage;
+        private int _shieldDamage;
 
-        public Spaceship(int maxStructure, int maxShield)
+        private List<Weapon> _weapons = new List<Weapon>();
+
+        public Spaceship(int maxStructure, int maxShield, string name)
         {
             this._maxStructure = maxStructure;
             this._maxShield = maxShield;
+            this._name = name;
         }
 
         private int MaxStructure
@@ -38,14 +47,83 @@
             set => _currentShield = value;
         }
 
-        public int StructureDommage
+        public int StructureDamage
         {
             get => this.MaxStructure - this.CurrentStructure;
         }
 
-        public int ShieldDammage
+        public int ShieldDamage
         {
             get => this.MaxShield - this.CurrentShield;
+        }
+
+        public List<Weapon> Weapons
+        {
+            get => _weapons;
+        }
+
+        public string Name
+        {
+            get => this._name;
+        }
+
+        //TODO répondre à la question 3 de la question 3 ... IsDestroyed
+
+        public void AddWeapon(Weapon weapon)
+        {
+            if (this.Weapons.Count == 3)
+                throw new Exception("Nombre d'arme maximum atteint, supprime en une pour en ajouter une nouvelle");
+
+            this._weapons.Add(weapon);
+        }
+
+        public void RemoveWeapon(Weapon weapon)
+        {
+            this.Weapons.Remove(weapon);
+        }
+
+        public void ClearWeapons()
+        {
+            this._weapons.Clear();
+        }
+
+        public void ViewWeapons()
+        {
+            if (this.Weapons.Count > 0)
+                Console.WriteLine("Le vaisseau possède les armes suivantes : ");
+            else
+                Console.WriteLine("Le vaisseau ne possède aucune armes !");
+
+            foreach (Weapon weapon in this.Weapons)
+            {
+                Console.WriteLine(weapon);
+            }
+        }
+
+        /*
+         * Je n'ai pas très bien compris la question :
+         * Je part donc du principe qu'avec les armes que dispose le vaisseau à un instant T,
+         * je calcule les dégâts moyen qu'il peut infliger.
+         */
+        public double AverageDamages()
+        {
+            int sumMaxDomages = 0;
+            foreach (Weapon weapon in this.Weapons)
+            {
+                sumMaxDomages += (weapon.MinDamage + weapon.MaxDamage) / 2;
+            }
+
+            return sumMaxDomages / this.Weapons.Count;
+        }
+
+        public void ViewShip()
+        {
+            Console.WriteLine($"Le vaisseau {this.Name} à {this.MaxStructure} de structure max, " +
+                              $"{this.MaxShield} de shield max, " +
+                              $"{this.CurrentShield} de shield courant, " +
+                              $"{this.CurrentStructure} de structure courante, " +
+                              $"et donc {this.ShieldDamage} de shield total dispo, " +
+                              $"et {this.StructureDamage} de structure total dispo");
         }
     }
 }
