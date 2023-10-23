@@ -33,10 +33,14 @@ namespace Bozlak_Fatih_Tp1
         {
             SpaceInvaders spaceInvaders = new SpaceInvaders();
 
+            Armory armory = new Armory();
+            Console.WriteLine("Voici les armes disponnible : ");
+            armory.ViewArmory();
+
             foreach (Player player in spaceInvaders.Players)
             {
                 Console.WriteLine(player);
-                Console.WriteLine($"Le joueur {player.Alias} possède le vaisseau {player.Spaceship.Name}");
+                Console.WriteLine($"\nLe joueur {player.Alias} possède le vaisseau {player.Spaceship.Name}");
 
                 Console.WriteLine("\nL'état complet du vaisseau est : ");
                 player.Spaceship.ViewShip();
@@ -49,7 +53,17 @@ namespace Bozlak_Fatih_Tp1
                         Console.WriteLine(weapon);
                     }
                 }
+            }
 
+            Console.WriteLine("\nTentative d'ajouter une arme n'étant pas l'armerie : ");
+            try
+            {
+                spaceInvaders.Players[0].Spaceship
+                    .AddWeapon(new Weapon("IMOPOSSIBLE_WEAPON", 0, 100, EWeaponType.Direct), armory);
+            }
+            catch (ArmoryException e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }
