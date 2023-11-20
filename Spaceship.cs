@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Bozlak_Fatih_Tp1
 {
-    public class Spaceship
+    public abstract class Spaceship
     {
         private readonly string _name;
 
@@ -128,6 +128,30 @@ namespace Bozlak_Fatih_Tp1
                               $"{this.CurrentStructure} de structure courante, " +
                               $"et donc {this.ShieldDamage} de shield total dispo, " +
                               $"et {this.StructureDamage} de structure total dispo");
+        }
+
+        public void ShootTarget(Spaceship target)
+        {
+            int degatAInfliger = 0;
+
+            foreach (Weapon w in Weapons)
+                degatAInfliger += w.Shoot();
+
+            target.TakeDamages(degatAInfliger);
+        }
+
+        private void TakeDamages(int degatRecu)
+        {
+            if (_currentShield < MaxShield)
+            {
+                int capaciteRestanteBouclier = MaxShield - _currentShield;
+                int degatAReporterSurStructure = Math.Max(0, degatRecu - capaciteRestanteBouclier);
+
+                _currentShield += degatRecu - degatAReporterSurStructure;
+                _currentStructure += degatAReporterSurStructure;
+            }
+            else
+                _currentStructure -= degatRecu;
         }
     }
 }

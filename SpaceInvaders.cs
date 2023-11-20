@@ -67,6 +67,7 @@ namespace Bozlak_Fatih_Tp1
             }
 
             Weapon w = new Weapon("Laser", 2, 3, EWeaponType.Direct, 2);
+            armory.AddWeapon(w);
             Console.WriteLine("\nLaser");
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
@@ -74,18 +75,21 @@ namespace Bozlak_Fatih_Tp1
 
 
             w = new Weapon("Hammer", 1, 8, EWeaponType.Explosive, 2);
+            armory.AddWeapon(w);
             Console.WriteLine("\nHammer");
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
 
             w = new Weapon("Torpille", 3, 3, EWeaponType.Guided, 2);
+            armory.AddWeapon(w);
             Console.WriteLine("\nTorpille");
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
 
-            w = new Weapon("Misille", 4, 100, EWeaponType.Direct, 4);
+            w = new Weapon("Misille", 4, 100, EWeaponType.Direct, 0);
+            armory.AddWeapon(w);
             Console.WriteLine("\nMissile");
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
@@ -93,6 +97,22 @@ namespace Bozlak_Fatih_Tp1
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
+
+            // Spaceship spaceship1 = new Spaceship(100, 100, "spaceship1");
+            // Spaceship spaceship2 = new Spaceship(100, 100, "spaceship2");
+            //
+            // spaceship1.AddWeapon(w, armory);
+            // spaceship1.AddWeapon(w, armory);
+            // spaceship2.AddWeapon(w, armory);
+            //
+            // spaceship1.ViewShip();
+            // spaceship2.ViewShip();
+            //
+            // spaceship1.ShootTarget(spaceship2);
+            // spaceship1.ViewShip();
+            // spaceship2.ViewShip();
+
+
         }
     }
 }
