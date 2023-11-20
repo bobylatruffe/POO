@@ -3,20 +3,23 @@ using System.Collections.Generic;
 
 namespace Bozlak_Fatih_Tp1
 {
-    public abstract class Spaceship
+    public abstract class Spaceship : ISpaceship
     {
-        private readonly string _name;
+        private string _name;
 
         private readonly int _maxStructure;
-        private int _currentStructure;
+        private double _currentStructure;
 
         private readonly int _maxShield;
-        private int _currentShield;
+        private double _currentShield;
 
         private int _structureDamage;
         private int _shieldDamage;
 
         private List<Weapon> _weapons = new List<Weapon>();
+        private double _averageDamages;
+
+        private Player _player;
 
         public Spaceship(int maxStructure, int maxShield, string name)
         {
@@ -30,9 +33,17 @@ namespace Bozlak_Fatih_Tp1
             get => _maxStructure;
         }
 
-        public int CurrentStructure
+        double ISpaceship.AverageDamages => _averageDamages;
+
+        public Player Player
         {
-            private get => _currentStructure;
+            get => this._player;
+            set => this._player = value;
+        }
+
+        public double CurrentStructure
+        {
+            get => _currentStructure;
             set => _currentStructure = value;
         }
 
@@ -41,21 +52,23 @@ namespace Bozlak_Fatih_Tp1
             get => _maxShield;
         }
 
-        public int CurrentShield
+        public double CurrentShield
         {
-            private get => _currentShield;
+            get => _currentShield;
             set => _currentShield = value;
         }
 
-        public int StructureDamage
+        public double StructureDamage
         {
             get => this.MaxStructure - this.CurrentStructure;
         }
 
-        public int ShieldDamage
+        public double ShieldDamage
         {
             get => this.MaxShield - this.CurrentShield;
         }
+
+        public int MaxWeapons { get; }
 
         public List<Weapon> Weapons
         {
@@ -65,9 +78,26 @@ namespace Bozlak_Fatih_Tp1
         public string Name
         {
             get => this._name;
+            set => this._name = value;
+        }
+
+        public double Structure { get; set; }
+        public double Shield { get; set; }
+
+        public bool IsDestroyed
+        {
+            get => StructureDamage == 0 ? true : false;
         }
 
         //TODO répondre à la question 3 de la question 3 ... IsDestroyed
+
+        public void ReloadWeapons()
+        {
+            foreach (Weapon weapon in Weapons)
+            {
+                weapon.TimeBeforeReload = 0;
+            }
+        }
 
         public virtual void AddWeapon(Weapon weapon)
         {
@@ -107,7 +137,7 @@ namespace Bozlak_Fatih_Tp1
          */
         public double AverageDamages()
         {
-            int sumMaxDomages = 0;
+            double sumMaxDomages = 0.0;
             foreach (Weapon weapon in this.Weapons)
             {
                 sumMaxDomages += (weapon.MinDamage + weapon.MaxDamage) / 2;
@@ -126,22 +156,32 @@ namespace Bozlak_Fatih_Tp1
                               $"et {this.StructureDamage} de structure total dispo");
         }
 
+        public void RepairShield(double repair)
+        {
+            CurrentShield -= repair;
+        }
+
         public virtual void ShootTarget(Spaceship target)
         {
             int degatAInfliger = 0;
 
             foreach (Weapon w in Weapons)
-                degatAInfliger += w.Shoot();
+                degatAInfliger += (int)w.Shoot();
 
             target.TakeDamages(degatAInfliger);
         }
 
-        public virtual void TakeDamages(int degatRecu)
+        public bool BelongsPlayer
+        {
+            get => this.Player != null ? true : false;
+        }
+
+        public virtual void TakeDamages(double degatRecu)
         {
             if (_currentShield < MaxShield)
             {
-                int capaciteRestanteBouclier = MaxShield - _currentShield;
-                int degatAReporterSurStructure = Math.Max(0, degatRecu - capaciteRestanteBouclier);
+                double capaciteRestanteBouclier = MaxShield - _currentShield;
+                double degatAReporterSurStructure = Math.Max(0, degatRecu - capaciteRestanteBouclier);
 
                 _currentShield += degatRecu - degatAReporterSurStructure;
                 _currentStructure += degatAReporterSurStructure;

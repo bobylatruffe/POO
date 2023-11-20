@@ -8,7 +8,7 @@ namespace Bozlak_Fatih_Tp1
         {
         }
 
-        public override void TakeDamages(int degatRecu)
+        public override void TakeDamages(double degatRecu)
         {
             if (new Random().Next(0, 2) == 0)
             {

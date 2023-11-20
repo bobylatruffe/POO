@@ -2,7 +2,7 @@
 
 namespace Bozlak_Fatih_Tp1
 {
-    public class Player
+    public class Player : IPlayer
     {
         private readonly string _firstName;
         private readonly string _lastName;
@@ -46,6 +46,8 @@ namespace Bozlak_Fatih_Tp1
         {
             get => _alias;
         }
+
+        public Spaceship BattleShip { get; set; }
 
         public string Name
         {

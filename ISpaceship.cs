@@ -1,12 +1,6 @@
-﻿using Models.SpaceShips;
-using SpaceInvadersArmory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Models
+namespace Bozlak_Fatih_Tp1
 {
     public interface ISpaceship
     {
@@ -29,6 +23,5 @@ namespace Models
         void ClearWeapons();
         void ViewShip();
         void ViewWeapons();
-        
     }
 }

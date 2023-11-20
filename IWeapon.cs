@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SpaceInvadersArmory
+﻿namespace Bozlak_Fatih_Tp1
 {
     public interface IWeapon
     {

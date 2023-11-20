@@ -1,6 +1,4 @@
-﻿using Models.SpaceShips;
-
-namespace Models
+﻿namespace Bozlak_Fatih_Tp1
 {
     public interface IPlayer
     {

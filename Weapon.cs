@@ -9,14 +9,14 @@ namespace Bozlak_Fatih_Tp1
         Guided
     }
 
-    public class Weapon
+    public class Weapon : IWeapon
     {
         private string _name;
-        private int _minDamage;
-        private int _maxDamage;
-        private readonly EWeaponType _eWeaponType;
-        private int _reloadTime;
-        private int _timeBeforeReload;
+        private double _minDamage;
+        private double _maxDamage;
+        private EWeaponType _eWeaponType;
+        private double _reloadTime;
+        private double _timeBeforeReload;
 
         public Weapon(string name, int minDamage, int maxDamage, EWeaponType eWeaponType, int reloadTime)
         {
@@ -29,19 +29,28 @@ namespace Bozlak_Fatih_Tp1
             this._timeBeforeReload = _reloadTime;
         }
 
-        public int MinDamage
+        public EWeaponType Type
         {
-            get => this._minDamage;
+            get => this._eWeaponType;
+            set => this._eWeaponType = value;
         }
 
-        public int MaxDamage
+        public double MinDamage
+        {
+            get => this._minDamage;
+            set => this._minDamage = value;
+        }
+
+        public double MaxDamage
         {
             get => this._maxDamage;
+            set => this._maxDamage = value;
         }
 
         public string Name
         {
             get => this._name;
+            set => this._name = value;
         }
 
         public EWeaponType EWeaponType
@@ -49,21 +58,27 @@ namespace Bozlak_Fatih_Tp1
             get => _eWeaponType;
         }
 
-        public int ReloadTime
+        public double AverageDamage { get; }
+
+        public double ReloadTime
         {
             get => this._reloadTime;
             set => _reloadTime = value;
         }
 
-        public int TimeBeforeReload
+        public double TimeBeforReload { get; set; }
+
+        public double TimeBeforeReload
         {
             get => this._timeBeforeReload;
             set => _timeBeforeReload = value;
         }
 
-        public int Shoot()
+        public bool IsReload { get; }
+
+        public double Shoot()
         {
-            int degat = 0;
+            double degat = 0;
 
             if (this.TimeBeforeReload != 0)
             {
@@ -72,7 +87,7 @@ namespace Bozlak_Fatih_Tp1
                 return degat;
             }
 
-            degat = new Random().Next(MinDamage, MaxDamage + 1);
+            degat = new Random().Next((int)MinDamage, (int)(MaxDamage + 1.0));
 
             switch (EWeaponType)
             {
@@ -103,11 +118,11 @@ namespace Bozlak_Fatih_Tp1
             return
                 $"{this.Name} " +
                 $"(" +
-                    $"type={this.EWeaponType}, " +
-                    $"minDamage={this.MinDamage}, " +
-                    $"maxDamage={this.MaxDamage}, " +
-                    $"reloadTime={this.ReloadTime}, " +
-                    $"timeBeforeReload={this.TimeBeforeReload}" +
+                $"type={this.EWeaponType}, " +
+                $"minDamage={this.MinDamage}, " +
+                $"maxDamage={this.MaxDamage}, " +
+                $"reloadTime={this.ReloadTime}, " +
+                $"timeBeforeReload={this.TimeBeforeReload}" +
                 $")";
         }
     }
