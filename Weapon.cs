@@ -100,7 +100,15 @@ namespace Bozlak_Fatih_Tp1
 
         public override string ToString()
         {
-            return $"{this.Name} (type={this.EWeaponType}, minDamage={this.MinDamage}, maxDamage={this.MaxDamage})";
+            return
+                $"{this.Name} " +
+                $"(" +
+                    $"type={this.EWeaponType}, " +
+                    $"minDamage={this.MinDamage}, " +
+                    $"maxDamage={this.MaxDamage}, " +
+                    $"reloadTime={this.ReloadTime}, " +
+                    $"timeBeforeReload={this.TimeBeforeReload}" +
+                $")";
         }
     }
 }

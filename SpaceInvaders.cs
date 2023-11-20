@@ -59,7 +59,7 @@ namespace Bozlak_Fatih_Tp1
             try
             {
                 spaceInvaders.Players[0].Spaceship
-                    .AddWeapon(new Weapon("IMOPOSSIBLE_WEAPON", 0, 100, EWeaponType.Direct, 2), armory);
+                    .AddWeapon(new Weapon("IMOPOSSIBLE_WEAPON", 0, 100, EWeaponType.Direct, 2));
             }
             catch (ArmoryException e)
             {
@@ -88,7 +88,7 @@ namespace Bozlak_Fatih_Tp1
             Console.WriteLine(w.Shoot());
             Console.WriteLine(w.Shoot());
 
-            w = new Weapon("Misille", 4, 100, EWeaponType.Direct, 0);
+            w = new Weapon("Misille", 4, 100, EWeaponType.Direct, 4);
             armory.AddWeapon(w);
             Console.WriteLine("\nMissile");
             Console.WriteLine(w.Shoot());
@@ -112,7 +112,21 @@ namespace Bozlak_Fatih_Tp1
             // spaceship1.ViewShip();
             // spaceship2.ViewShip();
 
+            Dart dart = new Dart("Dart");
+            dart.ViewShip();
+            dart.ViewWeapons();
 
+            BWings bWings = new BWings("BWings");
+            bWings.ViewShip();
+            bWings.ViewWeapons();
+
+            Rocinante rocinante = new Rocinante("Rocinante");
+            rocinante.ViewShip();
+            rocinante.ViewWeapons();
+
+            ViperMKII viperMkii = new ViperMKII("ViperMKII");
+            viperMkii.ViewShip();
+            viperMkii.ViewWeapons();
         }
     }
 }

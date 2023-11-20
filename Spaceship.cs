@@ -69,16 +69,12 @@ namespace Bozlak_Fatih_Tp1
 
         //TODO répondre à la question 3 de la question 3 ... IsDestroyed
 
-        public void AddWeapon(Weapon weapon, Armory weaponAvailable)
+        public virtual void AddWeapon(Weapon weapon)
         {
             if (this.Weapons.Count == 3)
                 throw new Exception("Nombre d'arme maximum atteint, supprime en une pour en ajouter une nouvelle");
 
-            if (weaponAvailable.Weapons.Contains(weapon))
-                this._weapons.Add(weapon);
-            else
-                throw new ArmoryException(
-                    "Impossible d'ajouter cette arme, elle n'est pas disponnible dans l'armurie !");
+            this.Weapons.Add(weapon);
         }
 
         public void RemoveWeapon(Weapon weapon)
@@ -130,7 +126,7 @@ namespace Bozlak_Fatih_Tp1
                               $"et {this.StructureDamage} de structure total dispo");
         }
 
-        public void ShootTarget(Spaceship target)
+        public virtual void ShootTarget(Spaceship target)
         {
             int degatAInfliger = 0;
 
@@ -140,7 +136,7 @@ namespace Bozlak_Fatih_Tp1
             target.TakeDamages(degatAInfliger);
         }
 
-        private void TakeDamages(int degatRecu)
+        public virtual void TakeDamages(int degatRecu)
         {
             if (_currentShield < MaxShield)
             {

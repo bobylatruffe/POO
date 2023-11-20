@@ -22,7 +22,7 @@ namespace Bozlak_Fatih_Tp1
             _lastName = lastName;
             _alias = alias;
 
-            _spaceship = new Spaceship(100, 100, "NostrodonDe" + _alias);
+            _spaceship = new Dart("Norstrodon" + alias);
         }
 
         public Player(string firstName, string lastName, string alias, Spaceship spaceship) : this(firstName, lastName,
