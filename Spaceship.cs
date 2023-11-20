@@ -86,7 +86,7 @@ namespace Bozlak_Fatih_Tp1
 
         public bool IsDestroyed
         {
-            get => StructureDamage == 0 ? true : false;
+            get => StructureDamage <= 0 ? true : false;
         }
 
         //TODO répondre à la question 3 de la question 3 ... IsDestroyed
@@ -187,7 +187,7 @@ namespace Bozlak_Fatih_Tp1
                 _currentStructure += degatAReporterSurStructure;
             }
             else
-                _currentStructure -= degatRecu;
+                _currentStructure += degatRecu;
         }
     }
 }

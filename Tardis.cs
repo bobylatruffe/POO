@@ -12,7 +12,7 @@ namespace Bozlak_Fatih_Tp1
 
         public void UseAbility(List<Spaceship> spaceships)
         {
-            int indexOfVaisseauRandom = new Random().Next(0, spaceships.Count - 1);
+            int indexOfVaisseauRandom = new Random().Next(0, spaceships.Count);
 
             Spaceship tmp = spaceships[indexOfVaisseauRandom];
             spaceships[spaceships.IndexOf(this)] = tmp;

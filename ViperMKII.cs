@@ -21,18 +21,16 @@ namespace Bozlak_Fatih_Tp1
         {
             List<Weapon> disponniblePourTirer = new List<Weapon>();
 
-            while (disponniblePourTirer.Count <= 1)
-            {
-                disponniblePourTirer.Clear();
+            disponniblePourTirer.Clear();
 
-                foreach (Weapon weapon in Weapons)
-                {
-                    if (weapon.TimeBeforeReload == 0)
-                        disponniblePourTirer.Add(weapon);
-                }
+            foreach (Weapon weapon in Weapons)
+            {
+                if (weapon.TimeBeforeReload == 0)
+                    disponniblePourTirer.Add(weapon);
             }
 
-            base.TakeDamages(disponniblePourTirer[new Random().Next(0, disponniblePourTirer.Count)].Shoot());
+            if (disponniblePourTirer.Count > 0)
+                base.TakeDamages(disponniblePourTirer[new Random().Next(0, disponniblePourTirer.Count)].Shoot());
         }
     }
 }
