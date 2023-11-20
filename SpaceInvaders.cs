@@ -59,12 +59,40 @@ namespace Bozlak_Fatih_Tp1
             try
             {
                 spaceInvaders.Players[0].Spaceship
-                    .AddWeapon(new Weapon("IMOPOSSIBLE_WEAPON", 0, 100, EWeaponType.Direct), armory);
+                    .AddWeapon(new Weapon("IMOPOSSIBLE_WEAPON", 0, 100, EWeaponType.Direct, 2), armory);
             }
             catch (ArmoryException e)
             {
                 Console.WriteLine(e.Message);
             }
+
+            Weapon w = new Weapon("Laser", 2, 3, EWeaponType.Direct, 2);
+            Console.WriteLine("\nLaser");
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+
+
+            w = new Weapon("Hammer", 1, 8, EWeaponType.Explosive, 2);
+            Console.WriteLine("\nHammer");
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+
+            w = new Weapon("Torpille", 3, 3, EWeaponType.Guided, 2);
+            Console.WriteLine("\nTorpille");
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+
+            w = new Weapon("Misille", 4, 100, EWeaponType.Direct, 4);
+            Console.WriteLine("\nMissile");
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
+            Console.WriteLine(w.Shoot());
         }
     }
 }

@@ -19,19 +19,12 @@ namespace Bozlak_Fatih_Tp1
 
         private void Init()
         {
-            string[] namesWeapons = new[] { "FuseeDirect", "FuseeExplosive", "FuseeGuidee" };
-            Array eWeaponTypes = Enum.GetValues(typeof(EWeaponType));
-            for (int i = 0; i < eWeaponTypes.Length; i++)
-            {
-                // Console.WriteLine(eWeaponTypes.GetValue(i));
-                this._weapons.Add(
-                    new Weapon(namesWeapons[i],
-                        0,
-                        200,
-                        (EWeaponType)eWeaponTypes.GetValue(i)
-                    )
-                );
-            }
+            this._weapons.Add(new Weapon("Laser", 2, 3, EWeaponType.Direct, 2));
+            this._weapons.Add(new Weapon("Hammer", 1, 8, EWeaponType.Explosive, 2));
+            this._weapons.Add(new Weapon("Torpille", 3, 3, EWeaponType.Guided, 2));
+            this._weapons.Add(new Weapon("Mitralleuse", 6, 8, EWeaponType.Direct, 1));
+            this._weapons.Add(new Weapon("EMG", 1, 7, EWeaponType.Explosive, 2));
+            this._weapons.Add(new Weapon("Misille", 4, 100, EWeaponType.Direct, 4));
         }
 
         public void ViewArmory()
